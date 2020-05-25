@@ -1,10 +1,10 @@
 {
   "name": "reddit-gallery",
-	"version": "0.1.0",
-	"engines": {
-		"node": "v10.16.3",
-		"npm": "6.9.0"
-	},
+  "version": "0.1.0",
+  "engines": {
+    "node": "10.16.3",
+    "npm": "6.9.0"
+  },
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.9.14",
