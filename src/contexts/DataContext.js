@@ -8,7 +8,7 @@ class DataContextProvider extends Component {
 		dataList: [],
 		isLoading: true,
 		detailInfo: {},
-		sortby: ''
+		filter: {}
 	}
 
 	getData() {
@@ -51,15 +51,44 @@ class DataContextProvider extends Component {
 		})
 	};
 
-	// sortInfo = (sortValue) => {
+	updateFilter = filter => {
+		this.setState({
+		  filter
+		})
+	};
 
-	// }
+	static applyFilter(listings, filter) {
+		const { sortOrder } = filter
+		let result = listings
+		if (sortOrder) {
+			if (sortOrder === 'assending') {
+			  result = result.sort((a, b) => {
+				  return (a.title).localeCompare(b.title)
+			  })
+			}
+			if (sortOrder === 'descending') {
+			  result = result.sort((a, b) => {
+				return (b.title).localeCompare(a.title)
+			  })
+			}
+		  }
+		console.log(result);
+  		return result
+	};
+
 
 	render() {
+		const { dataList, filter } = this.state
+		const filteredListings = DataContextProvider.applyFilter(
+			dataList,
+			filter
+		)
+		console.log(filteredListings);
 		return (
 			<DataContext.Provider value={{
 				...this.state,
-				handleDetail: this.handleDetail
+				handleDetail: this.handleDetail,
+				updateFilter: this.updateFilter,
 			}}>
 				{this.props.children}
 			</DataContext.Provider>
