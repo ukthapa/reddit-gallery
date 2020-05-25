@@ -72,32 +72,4 @@ const useStyles = theme => ({
 	  }
   }
 
-// function CardGallery(props) {
-// 	const classes = useStyles();
-	// return (
-	// 	<React.Fragment>
-	// 		{value => (
-	// 			<Grid item xs={12} sm={6} md={4} onClick={() => value.handleDetail(props.imageDetail.id)}>
-	// 				<Link to={`/detail/${props.imageDetail.id}`}>
-	// 					<Card className={classes.root} variant="outlined">
-	// 						<CardMedia
-	// 							className={classes.cover}
-	// 							image={props.imageDetail.thumbnail}
-	// 							title= {props.imageDetail.title}
-	// 						/>
-	// 						<div className={classes.details}>
-	// 							<CardContent className="classes.content">
-	// 								<Typography component="h2" className="classes.header">
-	// 									{ props.imageDetail.title }
-	// 								</Typography>
-	// 							</CardContent>
-	// 						</div>
-	// 					</Card>
-	// 				</Link>
-	// 			</Grid>
-	// 		)}
-	// 	</React.Fragment>
-	// )
-// }
-
 export default withStyles(useStyles) (CardGallery)
