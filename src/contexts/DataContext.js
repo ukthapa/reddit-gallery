@@ -7,7 +7,8 @@ class DataContextProvider extends Component {
 	state = {
 		dataList: [],
 		isLoading: true,
-		detailInfo: {}
+		detailInfo: {},
+		sortby: ''
 	}
 
 	getData() {
@@ -21,7 +22,7 @@ class DataContextProvider extends Component {
 				thumbnailHeight: imageinfo.data.thumbnail_height,
 				imageURL: imageinfo.data.url,
 				author: imageinfo.data.author,
-				description: imageinfo.data.selfttext,
+				description: imageinfo.data.selftext,
 				score: imageinfo.data.score,
 				totalAwards: imageinfo.data.total_awards_received,
 				awardings: imageinfo.data.all_awardings
@@ -49,6 +50,10 @@ class DataContextProvider extends Component {
 			return {detailInfo:imageDetail}
 		})
 	};
+
+	// sortInfo = (sortValue) => {
+
+	// }
 
 	render() {
 		return (
