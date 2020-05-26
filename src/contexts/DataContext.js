@@ -8,7 +8,7 @@ class DataContextProvider extends Component {
 		dataList: [],
 		isLoading: true,
 		detailInfo: {},
-		filter: {}
+		filter: {},
 	}
 
 	getData() {
@@ -25,7 +25,6 @@ class DataContextProvider extends Component {
 				description: imageinfo.data.selftext,
 				score: imageinfo.data.score,
 				totalAwards: imageinfo.data.total_awards_received,
-				awardings: imageinfo.data.all_awardings
 				}))).then(dataList => {
 				this.setState({
 					dataList,
@@ -47,7 +46,9 @@ class DataContextProvider extends Component {
 	handleDetail = (id) => {
 		const imageDetail = this.getDetail(id);
 		this.setState(()=>{
-			return {detailInfo:imageDetail}
+			return {
+				detailInfo:imageDetail
+			}
 		})
 	};
 

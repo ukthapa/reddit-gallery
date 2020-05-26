@@ -46,30 +46,30 @@ const useStyles = theme => ({
 		const {id, title, thumbnail } = this.props.imageDetail;
 		const { classes } = this.props;
 		return (
-			<DataContextConsumer>
-				{value => (
-					<Grid item xs={12} sm={6} md={4} onClick={() =>
-						value.handleDetail(id)
-						}>
-						<Link to={`/${id}`} className={classes.link}>
-							<Card className={classes.root} variant="outlined">
-								<CardMedia
-									className={classes.cover}
-									image={thumbnail}
-									title= {title}
-								/>
-								<div className={classes.details}>
-									<CardContent>
-										<Typography component="h2" className={classes.header} >
-											{ title }
-										</Typography>
-									</CardContent>
-								</div>
-							</Card>
-						</Link>
-					</Grid>
-				)}
-			</DataContextConsumer>
+				<DataContextConsumer>
+					{value => (
+						<Grid item xs={12} sm={6} md={4} onClick={() =>
+							value.handleDetail(id)
+							}>
+							<Link to={`/${id}`} className={classes.link}>
+								<Card className={classes.root} variant="outlined">
+									<CardMedia
+										className={classes.cover}
+										image={thumbnail}
+										title= {title}
+									/>
+									<div className={classes.details}>
+										<CardContent>
+											<Typography component="h2" className={classes.header} >
+												{ title }
+											</Typography>
+										</CardContent>
+									</div>
+								</Card>
+							</Link>
+						</Grid>
+					)}
+				</DataContextConsumer>
 		)
 	  }
   }

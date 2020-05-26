@@ -4,15 +4,17 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import CardGallery from './CardGallery';
 import Filter from './Filter';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { DataContextConsumer } from '../contexts/DataContext';
 
 const bodyBgColor = {
 	bgcolor: '#f3f3f3',
 };
+
 class Gallery extends Component {
 		render(){
 			return (
-				<Box {...bodyBgColor} pt={14}  pb={6}>
+				<Box {...bodyBgColor} pt={12}  pb={6}>
 					<Container width={1}>
 						<DataContextConsumer>
 						{value => {
@@ -20,13 +22,15 @@ class Gallery extends Component {
 							return (
 								<React.Fragment>
 									<Filter updateFilter={updateFilter} />
-									<Grid item container  spacing={2}>
+									<Grid item container  justify="center" alignItems="center" spacing={2}>
 										{!isLoading ? (
 											dataList.map(image => {
 												return <CardGallery key={image.id} imageDetail={image} />
 											})
 											) : (
-												<Grid item xs={12}>Loading....</Grid>
+												<Grid item xs={2}>
+													<CircularProgress />
+												</Grid>
 											)
 										}
 									</Grid>
