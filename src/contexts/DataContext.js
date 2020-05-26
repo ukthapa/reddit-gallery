@@ -72,18 +72,16 @@ class DataContextProvider extends Component {
 			  })
 			}
 		  }
-		console.log(result);
   		return result
 	};
 
 
 	render() {
 		const { dataList, filter } = this.state
-		const filteredListings = DataContextProvider.applyFilter(
+		DataContextProvider.applyFilter(
 			dataList,
 			filter
 		)
-		console.log(filteredListings);
 		return (
 			<DataContext.Provider value={{
 				...this.state,

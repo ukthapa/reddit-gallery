@@ -1,21 +1,27 @@
 import React, { Component } from 'react'
 import Box from '@material-ui/core/Box';
-import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import NativeSelect from '@material-ui/core/NativeSelect';
 // import { DataContextConsumer } from '../contexts/DataContext';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = theme => ({
+	root: {
+		textAlign: 'right'
+	},
 	button: {
 	  display: 'block',
 	  marginTop: theme.spacing(2),
 	},
 	formControl: {
 	  margin: theme.spacing(1),
-	  minWidth: 120,
+	  minWidth: 150,
 	},
-  }));
+	formselect: {
+		paddingRight: '56px',
+	}
+  });
 
 class Filter extends Component {
 	state = {
@@ -23,20 +29,22 @@ class Filter extends Component {
   		sortOrders: ['Assending', 'Descending']
 	}
 	render() {
+		const { classes } = this.props;
 		return (
-			<Box component="div" m={12}>
-				<FormControl
+			<Box component="div" className={classes.root}>
+				<FormControl variant="outlined"
+					className={classes.formControl}
 					onChange={() => setTimeout(() => this.props.updateFilter(this.state), 0)}
 				>
-				<InputLabel htmlFor="age-native-simple">
+				<InputLabel htmlFor="sortorder">
 					Sort by Title:
 				</InputLabel>
 				<NativeSelect id="sortorder"
-					className="form-select"
+					className="formselect"
 					value ={this.state.sortOrder}
 					onChange={event => this.setState({ sortOrder: event.target.value })}
 				>
-					<option aria-label="None" value="">Choose...</option>
+					<option aria-label="None" value="" />
 					{this.state.sortOrders.map(order => (
 						<option key={order} value={order.replace(' ', '').toLowerCase()}>
 						{order}
@@ -49,4 +57,4 @@ class Filter extends Component {
 	}
 }
 
-export default Filter
+export default withStyles(useStyles) (Filter)

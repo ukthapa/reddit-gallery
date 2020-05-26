@@ -10,6 +10,7 @@ import { DataContextConsumer } from '../contexts/DataContext';
 
 const useStyles = theme => ({
 	link: {
+		textDecoration: 'none',
 		"&:hover": {
 			textDecoration: 'none',
 		}
@@ -18,6 +19,7 @@ const useStyles = theme => ({
 	  display: 'flex',
 	  alignItems: 'center',
 	  transition: 'all .2s ease',
+	  textDecoration: 'none',
 	  "&:hover": {
 		boxShadow: '1px 4px 12px #ccc',
 		transform: 'translateY(-4px)',
@@ -35,7 +37,7 @@ const useStyles = theme => ({
 	  flex: 1
 	},
 	header: {
-		fontSize: '14px'
+		fontSize: '14px',
 	}
   });
 
@@ -49,7 +51,7 @@ const useStyles = theme => ({
 					<Grid item xs={12} sm={6} md={4} onClick={() =>
 						value.handleDetail(id)
 						}>
-						<Link to={`/${id}`}>
+						<Link to={`/${id}`} className={classes.link}>
 							<Card className={classes.root} variant="outlined">
 								<CardMedia
 									className={classes.cover}
@@ -57,8 +59,8 @@ const useStyles = theme => ({
 									title= {title}
 								/>
 								<div className={classes.details}>
-									<CardContent className="classes.content">
-										<Typography component="h2" className={classes.header}>
+									<CardContent>
+										<Typography component="h2" className={classes.header} >
 											{ title }
 										</Typography>
 									</CardContent>
